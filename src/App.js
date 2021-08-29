@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar  from './components/layouts/Navbar';
+import Footer from './components/layouts/Footer';
+// React Router Import 
+import { Switch, Route } from 'react-router-dom';
+// Import Pages
+import Home from './components/layouts/pages/Home';
+import News from './components/layouts/pages/News';
+import Contacts from './components/layouts/pages/Contacts';
+import Details from './components/layouts/pages/Details';
+import NotFoundPage from './components/layouts/pages/NotFoundPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/news" component={News}/>
+          <Route path="/contacts" component={Contacts}/>
+          <Route path="/details" component={Details}/>
+          <Route component={NotFoundPage}/>
+        </Switch> 
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
